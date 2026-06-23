@@ -433,10 +433,17 @@ export default function App() {
             </div>
             <div className="min-h-96 rounded-[2.5rem] border border-charcoal/10 bg-gradient-to-br from-linen via-white to-oat p-5 shadow-soft">
               <div className="relative h-full min-h-80 overflow-hidden rounded-[2rem] border border-charcoal/10 bg-porcelain">
-                <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(39,35,31,0.06)_1px,transparent_1px),linear-gradient(rgba(39,35,31,0.06)_1px,transparent_1px)] bg-[size:42px_42px]" />
-                <div className="absolute left-1/2 top-1/2 h-20 w-20 -translate-x-1/2 -translate-y-1/2 rounded-full border-[12px] border-clay bg-white shadow-soft" />
-                <div className="absolute bottom-6 left-6 right-6 rounded-3xl bg-charcoal p-5 text-porcelain">
-                  <p className="text-sm text-porcelain/65">Map placeholder</p>
+                <iframe
+                  title="Map to Dentiq Smile Studios"
+                  src="https://www.google.com/maps?q=110%20Charlotte%20Place%2C%20Englewood%20Cliffs%2C%20NJ&output=embed"
+                  className="absolute inset-0 h-full w-full border-0"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+                <div className="absolute bottom-6 left-6 right-6 rounded-3xl bg-charcoal/92 p-5 text-porcelain shadow-soft backdrop-blur">
+                  <p className="text-sm text-porcelain/65">
+                    110 Charlotte Place, Englewood Cliffs, NJ
+                  </p>
                   <p className="mt-1 text-lg font-semibold">
                     Easy parking
                   </p>
