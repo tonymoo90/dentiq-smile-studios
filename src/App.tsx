@@ -16,6 +16,10 @@ type PatientPromise = {
   mark: string;
 };
 
+const openDentalSchedulingUrl =
+  import.meta.env.VITE_OPEN_DENTAL_SCHEDULING_URL?.trim();
+const schedulingHref = openDentalSchedulingUrl || "tel:+12014319753";
+
 const services: Service[] = [
   {
     title: "Cleanings",
@@ -116,7 +120,7 @@ function SectionHeader({
 
 function Button({
   children,
-  href = "#contact",
+  href = "#schedule",
   variant = "primary",
 }: {
   children: string;
@@ -202,6 +206,28 @@ function ContactDetail({ label, value }: { label: string; value: string }) {
   );
 }
 
+function ScheduleStep({
+  number,
+  title,
+  copy,
+}: {
+  number: string;
+  title: string;
+  copy: string;
+}) {
+  return (
+    <div className="flex gap-4 border-b border-charcoal/10 py-5 last:border-0">
+      <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-linen text-xs font-bold text-clay">
+        {number}
+      </span>
+      <div>
+        <p className="font-semibold text-charcoal">{title}</p>
+        <p className="mt-1 text-sm leading-6 text-charcoal/60">{copy}</p>
+      </div>
+    </div>
+  );
+}
+
 export default function App() {
   return (
     <main className="min-h-screen overflow-hidden bg-ivory text-charcoal">
@@ -230,7 +256,7 @@ export default function App() {
             </a>
           </div>
           <a
-            href="#contact"
+            href="#schedule"
             className="rounded-full bg-charcoal px-5 py-3 text-sm font-semibold text-porcelain transition hover:bg-charcoal/90"
           >
             Schedule
@@ -415,6 +441,86 @@ export default function App() {
         </div>
       </section>
 
+      <section id="schedule" className="px-5 py-20 sm:px-8">
+        <div className="mx-auto grid max-w-7xl overflow-hidden rounded-[2.5rem] border border-charcoal/10 bg-linen/70 shadow-soft lg:grid-cols-[1.05fr_0.95fr]">
+          <div className="flex flex-col justify-between p-8 md:p-12 lg:p-14">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.28em] text-clay">
+                Online scheduling
+              </p>
+              <h2 className="mt-4 max-w-xl font-serif text-4xl leading-tight text-charcoal md:text-6xl">
+                Choose a time that feels easy.
+              </h2>
+              <p className="mt-6 max-w-xl text-lg leading-8 text-charcoal/68">
+                Browse live availability and request your visit in a few calm,
+                simple steps. Your appointment details connect directly with
+                our Open Dental schedule.
+              </p>
+            </div>
+            <div className="mt-10 flex flex-wrap gap-3">
+              {["Live openings", "Instant confirmation", "Secure details"].map(
+                (item) => (
+                  <span
+                    key={item}
+                    className="rounded-full border border-charcoal/10 bg-white/75 px-4 py-2 text-sm font-medium text-charcoal/70"
+                  >
+                    {item}
+                  </span>
+                ),
+              )}
+            </div>
+          </div>
+
+          <div className="border-t border-charcoal/10 bg-porcelain p-6 md:p-10 lg:border-l lg:border-t-0">
+            <div className="rounded-[2rem] border border-charcoal/10 bg-white p-6 shadow-sm md:p-8">
+              <div className="flex items-start justify-between gap-4 border-b border-charcoal/10 pb-6">
+                <div>
+                  <p className="text-sm font-semibold text-charcoal">
+                    Request an appointment
+                  </p>
+                  <p className="mt-1 text-sm text-charcoal/55">
+                    New and returning patients
+                  </p>
+                </div>
+                <span className="rounded-full bg-sage/20 px-3 py-2 text-xs font-semibold text-charcoal/70">
+                  Available 24/7
+                </span>
+              </div>
+
+              <ScheduleStep
+                number="01"
+                title="Select your visit"
+                copy="Choose the appointment type that best fits your needs."
+              />
+              <ScheduleStep
+                number="02"
+                title="Pick an opening"
+                copy="See available dates and times from the practice schedule."
+              />
+              <ScheduleStep
+                number="03"
+                title="Confirm your details"
+                copy="Share your contact information and receive confirmation."
+              />
+
+              <a
+                href={schedulingHref}
+                target={openDentalSchedulingUrl ? "_blank" : undefined}
+                rel={openDentalSchedulingUrl ? "noreferrer" : undefined}
+                className="mt-6 inline-flex min-h-14 w-full items-center justify-center rounded-full bg-charcoal px-6 text-sm font-semibold text-porcelain transition hover:bg-charcoal/90"
+              >
+                {openDentalSchedulingUrl
+                  ? "View available times"
+                  : "Call to request a time"}
+              </a>
+              <p className="mt-4 text-center text-xs leading-5 text-charcoal/45">
+                Powered by Open Dental Web Sched
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="contact" className="px-5 py-20 sm:px-8">
         <div className="mx-auto max-w-7xl">
           <SectionHeader
@@ -440,11 +546,11 @@ export default function App() {
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                 />
-                <div className="absolute bottom-6 left-6 right-6 rounded-3xl bg-charcoal/92 p-5 text-porcelain shadow-soft backdrop-blur">
-                  <p className="text-sm text-porcelain/65">
+                <div className="absolute bottom-6 left-6 right-6 rounded-3xl border border-charcoal/10 bg-white/90 p-5 text-charcoal shadow-soft backdrop-blur">
+                  <p className="text-sm font-medium leading-6 text-charcoal/70">
                     110 Charlotte Place, Englewood Cliffs, NJ
                   </p>
-                  <p className="mt-1 text-lg font-semibold">
+                  <p className="mt-1 text-lg font-semibold text-charcoal">
                     Easy parking
                   </p>
                 </div>
