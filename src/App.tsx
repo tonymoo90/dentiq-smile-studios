@@ -116,9 +116,11 @@ function SectionHeader({
 
 function Button({
   children,
+  href = "#contact",
   variant = "primary",
 }: {
   children: string;
+  href?: string;
   variant?: "primary" | "secondary";
 }) {
   const classes =
@@ -128,7 +130,7 @@ function Button({
 
   return (
     <a
-      href="#contact"
+      href={href}
       className={`inline-flex min-h-12 items-center justify-center rounded-full px-6 text-sm font-semibold transition ${classes}`}
     >
       {children}
@@ -252,7 +254,9 @@ export default function App() {
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
               <Button>Schedule Appointment</Button>
-              <Button variant="secondary">Call Now</Button>
+              <Button href="tel:+12014319753" variant="secondary">
+                Call Now
+              </Button>
             </div>
             <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <TrustBadge label="Same-week appointments" />
@@ -421,10 +425,10 @@ export default function App() {
           <div className="mt-14 grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
             <div className="grid gap-4">
               <ContactDetail label="Hours" value="Mon-Thu 8-5, Fri 8-2" />
-              <ContactDetail label="Phone" value="(312) 555-0184" />
+              <ContactDetail label="Phone" value="201-431-9753" />
               <ContactDetail
                 label="Location"
-                value="1840 W. Oak Street, Suite 210, Chicago, IL"
+                value="110 Charlotte Place, Englewood Cliffs, NJ"
               />
             </div>
             <div className="min-h-96 rounded-[2.5rem] border border-charcoal/10 bg-gradient-to-br from-linen via-white to-oat p-5 shadow-soft">
@@ -434,7 +438,7 @@ export default function App() {
                 <div className="absolute bottom-6 left-6 right-6 rounded-3xl bg-charcoal p-5 text-porcelain">
                   <p className="text-sm text-porcelain/65">Map placeholder</p>
                   <p className="mt-1 text-lg font-semibold">
-                    Easy parking and elevator access
+                    Easy parking
                   </p>
                 </div>
               </div>
@@ -446,7 +450,7 @@ export default function App() {
       <footer className="border-t border-charcoal/10 px-5 py-10 sm:px-8">
         <div className="mx-auto flex max-w-7xl flex-col gap-5 text-sm text-charcoal/60 md:flex-row md:items-center md:justify-between">
           <p className="font-semibold text-charcoal">Dentiq Smile Studios</p>
-          <p>Modern cosmetic and family dentistry in Chicago.</p>
+          <p>Modern cosmetic and family dentistry in Englewood Cliffs.</p>
           <p>Copyright 2026 Dentiq Smile Studios</p>
         </div>
       </footer>
