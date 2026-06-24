@@ -383,14 +383,14 @@ export default function App() {
           </div>
           <div>
             <p className="mb-3 text-xs font-semibold uppercase tracking-[0.28em] text-clay">
-              Meet the dentist
+              Meet the team
             </p>
             <h2 className="font-serif text-4xl leading-tight text-charcoal md:text-6xl">
-              Dr. Doreen Charly believes calm care is better care.
+              Dentiq Smile Studios believes calm care is better care.
             </h2>
             <p className="mt-7 text-lg leading-9 text-charcoal/70">
               Dentiq Smile Studios was created for people who want excellent
-              dentistry without the cold clinical feeling. Dr. Charly blends
+              dentistry without the cold clinical feeling. We blend
               advanced cosmetic training with a gentle, unrushed approach so
               every patient understands their options and feels in control.
             </p>
@@ -534,21 +534,21 @@ export default function App() {
               <ContactDetail label="Phone" value="201-431-9753" />
               <ContactDetail
                 label="Location"
-                value="110 Charlotte Place, Englewood Cliffs, NJ"
+                value="110 Charlotte Place, Englewood Cliffs, NJ 07632"
               />
             </div>
             <div className="min-h-96 rounded-[2.5rem] border border-charcoal/10 bg-gradient-to-br from-linen via-white to-oat p-5 shadow-soft">
               <div className="relative h-full min-h-80 overflow-hidden rounded-[2rem] border border-charcoal/10 bg-porcelain">
                 <iframe
                   title="Map to Dentiq Smile Studios"
-                  src="https://www.google.com/maps?q=110%20Charlotte%20Place%2C%20Englewood%20Cliffs%2C%20NJ&output=embed"
+                  src="https://www.google.com/maps?q=110%20Charlotte%20Place%2C%20Englewood%20Cliffs%2C%20NJ%2007632&output=embed"
                   className="absolute inset-0 h-full w-full border-0"
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                 />
                 <div className="absolute bottom-6 left-6 right-6 rounded-3xl border border-charcoal/10 bg-white/90 p-5 text-charcoal shadow-soft backdrop-blur">
                   <p className="text-sm font-medium leading-6 text-charcoal/70">
-                    110 Charlotte Place, Englewood Cliffs, NJ
+                    110 Charlotte Place, Englewood Cliffs, NJ 07632
                   </p>
                   <p className="mt-1 text-lg font-semibold text-charcoal">
                     Easy parking
