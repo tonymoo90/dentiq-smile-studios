@@ -105,21 +105,21 @@ const promises: PatientPromise[] = [
 const reviews: Review[] = [
   {
     quote:
-      "I avoided the dentist for years and expected to feel embarrassed. Instead, the whole team made me feel calm and cared for.",
-    name: "Maya R.",
-    detail: "New patient cleaning",
+      "Such a good doctor. Very caring and not trying to sell me treatment.",
+    name: "WebMD patient",
+    detail: "November 13, 2025",
   },
   {
     quote:
-      "The space is beautiful, the plan was clear, and my veneers look like my smile on its best day.",
-    name: "Jordan T.",
-    detail: "Cosmetic dentistry",
+      "Gentle hands, good at explaining treatment, and very funny as well.",
+    name: "WebMD patient",
+    detail: "November 13, 2025",
   },
   {
     quote:
-      "They got me in quickly for a cracked tooth and explained every option without pressure.",
-    name: "Priya S.",
-    detail: "Emergency visit",
+      "Friendly staff, quick and efficient. Clean office. Dentist was very nice and gave me my options.",
+    name: "Brett A.",
+    detail: "Zocdoc verified patient, July 2, 2025",
   },
 ];
 
@@ -138,6 +138,47 @@ const transformations: Transformation[] = [
 ];
 
 const servicePages: ServicePage[] = [
+  {
+    slug: "new-patient-dentist-englewood-cliffs",
+    eyebrow: "New patient visits",
+    title: "New patient dentist in Englewood Cliffs, NJ",
+    metaTitle:
+      "New Patient Dentist in Englewood Cliffs, NJ | Dentiq Smile Studios",
+    metaDescription:
+      "Schedule a calm new patient dental visit in Englewood Cliffs, NJ. Judgment-free care, clear treatment plans, PPO insurance help, and same-week appointments.",
+    heroCopy:
+      "A first visit designed for clarity, comfort, and absolutely no judgment, whether it has been 6 months or 16 years.",
+    intro:
+      "Your first appointment at Dentiq Smile Studios starts with a conversation. We listen to what brought you in, take the records needed to understand your smile, and explain your options in a calm, practical way.",
+    highlights: [
+      "75-minute new patient visit",
+      "Photos, x-rays, and exam as needed",
+      "No lectures or shame",
+      "Clear plan with insurance guidance",
+    ],
+    faqs: [
+      {
+        question: "What happens at my first visit?",
+        answer:
+          "We begin with your goals and concerns, then complete a thoughtful exam with photos and x-rays as needed. From there, we explain what we see and outline next steps clearly.",
+      },
+      {
+        question: "Will I get a cleaning at my first appointment?",
+        answer:
+          "Sometimes, yes. If your gums and dental needs allow for a routine cleaning, we will try to keep care efficient. If you need a deeper or different type of visit, we will explain why before moving forward.",
+      },
+      {
+        question: "What if I am embarrassed or nervous?",
+        answer:
+          "You are not alone, and you will not be scolded. We designed the visit to feel calm, respectful, and paced around comfort.",
+      },
+      {
+        question: "Can you help me understand insurance?",
+        answer:
+          "Yes. We accept many PPO plans and can help review benefits and estimated costs before treatment decisions are made.",
+      },
+    ],
+  },
   {
     slug: "dental-cleanings-englewood-cliffs",
     eyebrow: "Preventive dentistry",
@@ -444,7 +485,7 @@ function ReviewCard({ review }: { review: Review }) {
   return (
     <article className="rounded-[2rem] border border-charcoal/10 bg-porcelain p-8 shadow-sm">
       <div className="mb-8 flex gap-1 text-clay" aria-label="Five star review">
-        {"* * * * *"}
+        {"★★★★★"}
       </div>
       <p className="text-xl leading-9 text-charcoal">"{review.quote}"</p>
       <div className="mt-8 border-t border-charcoal/10 pt-6">
@@ -546,8 +587,13 @@ function SiteNav() {
           <span className="grid h-10 w-10 place-items-center rounded-2xl bg-charcoal text-sm font-bold text-porcelain">
             DS
           </span>
-          <span className="text-base font-semibold tracking-tight sm:text-lg">
-            Dentiq Smile Studios
+          <span>
+            <span className="block text-base font-semibold leading-tight tracking-tight sm:text-lg">
+              Dentiq Smile Studios
+            </span>
+            <span className="mt-0.5 block text-xs font-medium text-charcoal/55">
+              Englewood Cliffs, New Jersey
+            </span>
           </span>
         </a>
         <div className="hidden items-center gap-8 text-sm font-medium text-charcoal/70 lg:flex">
@@ -613,9 +659,10 @@ function HomePage() {
               </Button>
             </div>
             <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <TrustBadge label="Englewood Cliffs, NJ" />
               <TrustBadge label="Same-week appointments" />
+              <TrustBadge label="Emergency visits available" />
               <TrustBadge label="Most PPO insurance accepted" />
-              <TrustBadge label="Anxiety-friendly care" />
             </div>
           </div>
 
@@ -688,33 +735,47 @@ function HomePage() {
               <PromiseCard key={item.title} item={item} />
             ))}
           </div>
+          <div className="mt-10 flex justify-center">
+            <a
+              href="/new-patient-dentist-englewood-cliffs"
+              className="inline-flex min-h-12 items-center justify-center rounded-full border border-charcoal/15 bg-porcelain/80 px-6 text-sm font-semibold text-charcoal transition hover:bg-white"
+            >
+              What to expect at your first visit
+            </a>
+          </div>
         </div>
       </section>
 
       <section className="px-5 py-20 sm:px-8">
         <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-          <div className="aspect-[4/5] rounded-[2.5rem] border border-charcoal/10 bg-gradient-to-br from-oat via-linen to-sage p-5 shadow-soft">
-            <div className="flex h-full flex-col justify-end rounded-[2rem] bg-[radial-gradient(circle_at_50%_24%,#fff8ee_0_12%,transparent_13%),linear-gradient(180deg,rgba(255,255,255,0.18),rgba(39,35,31,0.18))] p-7">
-              <div className="rounded-3xl border border-white/70 bg-white/70 p-5 backdrop-blur">
-                <p className="text-sm font-semibold text-charcoal">
-                  Portrait placeholder
+          <div className="aspect-[4/5] rounded-[2.5rem] border border-charcoal/10 bg-gradient-to-br from-white via-linen to-sage/70 p-5 shadow-soft">
+            <div className="relative flex h-full flex-col justify-end overflow-hidden rounded-[2rem] bg-[radial-gradient(circle_at_58%_18%,rgba(255,248,238,0.9),transparent_24%),linear-gradient(160deg,rgba(255,255,255,0.32),rgba(155,172,147,0.34))] p-7">
+              <div className="absolute inset-x-8 bottom-28 h-36 rounded-full bg-charcoal/10 blur-3xl" />
+              <img
+                src="/assets/dr-doreen-charly.png"
+                alt="Founder dentist of Dentiq Smile Studios"
+                className="absolute bottom-24 left-1/2 w-[82%] max-w-[31rem] -translate-x-1/2 drop-shadow-[0_26px_34px_rgba(39,35,31,0.24)]"
+              />
+              <div className="relative z-10 rounded-3xl border border-white/80 bg-porcelain/88 p-5 shadow-[0_18px_50px_rgba(39,35,31,0.08)] backdrop-blur">
+                <p className="text-base font-semibold text-charcoal">
+                  Founder dentist
                 </p>
-                <p className="mt-2 text-sm leading-6 text-charcoal/60">
-                  Warm editorial portrait area for the founder dentist.
+                <p className="mt-2 text-sm leading-6 text-charcoal/65">
+                  Founder dentist focused on calm, cosmetic-minded care.
                 </p>
               </div>
             </div>
           </div>
           <div>
             <p className="mb-3 text-xs font-semibold uppercase tracking-[0.28em] text-clay">
-              Meet the team
+              Meet the dentist
             </p>
             <h2 className="font-serif text-4xl leading-tight text-charcoal md:text-6xl">
-              Dentiq Smile Studios believes calm care is better care.
+              Calm care is better care.
             </h2>
             <p className="mt-7 text-lg leading-9 text-charcoal/70">
               Dentiq Smile Studios was created for people who want excellent
-              dentistry without the cold clinical feeling. We blend
+              dentistry without the cold clinical feeling. Our founder blends
               advanced cosmetic training with a gentle, unrushed approach so
               every patient understands their options and feels in control.
             </p>
