@@ -581,17 +581,17 @@ function ScheduleStep({
 
 function SiteNav() {
   return (
-    <nav className="sticky top-0 z-50 border-b border-charcoal/10 bg-ivory/85 backdrop-blur-xl">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-8">
-        <a href="/" className="flex items-center gap-3">
-          <span className="grid h-10 w-10 place-items-center rounded-2xl bg-charcoal text-sm font-bold text-porcelain">
+    <nav className="sticky top-0 z-50 border-b border-charcoal/10 bg-ivory/92 shadow-sm backdrop-blur-xl">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-4 sm:px-8">
+        <a href="/" className="flex min-w-0 shrink-0 items-center gap-3">
+          <span className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl bg-charcoal text-sm font-bold text-porcelain">
             DS
           </span>
-          <span>
-            <span className="block text-base font-semibold leading-tight tracking-tight sm:text-lg">
+          <span className="min-w-0">
+            <span className="block truncate text-base font-semibold leading-tight tracking-tight sm:text-lg">
               Dentiq Smile Studios
             </span>
-            <span className="mt-0.5 block text-xs font-medium text-charcoal/55">
+            <span className="mt-0.5 block truncate text-xs font-medium text-charcoal/55">
               Englewood Cliffs, New Jersey
             </span>
           </span>
@@ -612,7 +612,7 @@ function SiteNav() {
         </div>
         <a
           href="/#schedule"
-          className="rounded-full bg-charcoal px-5 py-3 text-sm font-semibold text-porcelain transition hover:bg-charcoal/90"
+          className="shrink-0 rounded-full bg-charcoal px-5 py-3 text-sm font-semibold text-porcelain transition hover:bg-charcoal/90"
         >
           Schedule
         </a>
@@ -623,13 +623,34 @@ function SiteNav() {
 
 function SiteFooter() {
   return (
-    <footer className="border-t border-charcoal/10 px-5 py-10 sm:px-8">
+    <footer className="border-t border-charcoal/10 px-5 pb-28 pt-10 sm:px-8 md:pb-10">
       <div className="mx-auto flex max-w-7xl flex-col gap-5 text-sm text-charcoal/60 md:flex-row md:items-center md:justify-between">
         <p className="font-semibold text-charcoal">Dentiq Smile Studios</p>
         <p>Modern cosmetic and family dentistry in Englewood Cliffs.</p>
         <p>Copyright 2026 Dentiq Smile Studios</p>
       </div>
     </footer>
+  );
+}
+
+function MobileActionBar() {
+  return (
+    <div className="fixed inset-x-0 bottom-0 z-50 border-t border-charcoal/10 bg-ivory/92 px-4 py-3 shadow-[0_-18px_50px_rgba(39,35,31,0.12)] backdrop-blur-xl md:hidden">
+      <div className="mx-auto grid max-w-md grid-cols-2 gap-3">
+        <a
+          href="tel:+12014319753"
+          className="inline-flex min-h-12 items-center justify-center rounded-full border border-charcoal/15 bg-porcelain px-4 text-sm font-semibold text-charcoal"
+        >
+          Call
+        </a>
+        <a
+          href="/#schedule"
+          className="inline-flex min-h-12 items-center justify-center rounded-full bg-charcoal px-4 text-sm font-semibold text-porcelain"
+        >
+          Schedule
+        </a>
+      </div>
+    </div>
   );
 }
 
@@ -972,6 +993,7 @@ function HomePage() {
       </section>
 
       <SiteFooter />
+      <MobileActionBar />
     </main>
   );
 }
@@ -1141,6 +1163,7 @@ function ServicePageView({ page }: { page: ServicePage }) {
         }}
       />
       <SiteFooter />
+      <MobileActionBar />
     </main>
   );
 }
