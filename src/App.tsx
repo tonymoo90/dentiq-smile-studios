@@ -670,10 +670,10 @@ function HomePage() {
             <div className="aspect-[4/5] rounded-[2.5rem] border border-charcoal/10 bg-gradient-to-br from-white via-linen to-oat p-5 shadow-soft">
               <div className="relative h-full overflow-hidden rounded-[2rem] border border-white/80 bg-[radial-gradient(circle_at_35%_25%,rgba(255,255,255,0.92),transparent_33%),linear-gradient(135deg,#f9f1e6,#d9c6ad_52%,#94a78f)] p-6">
                 <img
-                  src="/assets/mouth-hero.png"
+                  src="/assets/hero-glass-tooth-generated.png"
                   alt=""
                   aria-hidden="true"
-                  className="pointer-events-none absolute bottom-14 left-1/2 w-[92%] max-w-none -translate-x-1/2 -rotate-3 opacity-90 drop-shadow-[0_28px_36px_rgba(39,35,31,0.16)] sm:bottom-12 lg:bottom-16"
+                  className="pointer-events-none absolute bottom-20 left-1/2 w-[48%] max-w-[19rem] -translate-x-1/2 opacity-95 drop-shadow-[0_30px_38px_rgba(39,35,31,0.12)] sm:bottom-[5.5rem] sm:w-[46%] lg:bottom-24"
                 />
                 <div className="relative z-10 flex h-full flex-col justify-between">
                   <div className="max-w-56 rounded-3xl border border-white/70 bg-white/70 p-5 shadow-[0_18px_50px_rgba(39,35,31,0.08)] backdrop-blur">
