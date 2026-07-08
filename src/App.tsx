@@ -750,18 +750,14 @@ function HomePage() {
         <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
           <div className="aspect-[4/5] rounded-[2.5rem] border border-charcoal/10 bg-gradient-to-br from-white via-linen to-sage/70 p-5 shadow-soft">
             <div className="relative flex h-full flex-col justify-end overflow-hidden rounded-[2rem] bg-[radial-gradient(circle_at_58%_18%,rgba(255,248,238,0.9),transparent_24%),linear-gradient(160deg,rgba(255,255,255,0.32),rgba(155,172,147,0.34))] p-7">
-              <div className="absolute inset-x-8 bottom-28 h-36 rounded-full bg-charcoal/10 blur-3xl" />
-              <img
-                src="/assets/dr-doreen-charly.png"
-                alt="Founder dentist of Dentiq Smile Studios"
-                className="absolute bottom-24 left-1/2 w-[82%] max-w-[31rem] -translate-x-1/2 drop-shadow-[0_26px_34px_rgba(39,35,31,0.24)]"
-              />
+              <div className="absolute left-1/2 top-20 h-44 w-44 -translate-x-1/2 rounded-full bg-porcelain/75 shadow-[0_28px_80px_rgba(39,35,31,0.10)]" />
+              <div className="absolute inset-x-10 bottom-28 h-40 rounded-full bg-charcoal/10 blur-3xl" />
               <div className="relative z-10 rounded-3xl border border-white/80 bg-porcelain/88 p-5 shadow-[0_18px_50px_rgba(39,35,31,0.08)] backdrop-blur">
                 <p className="text-base font-semibold text-charcoal">
-                  Founder dentist
+                  Founder-led care
                 </p>
                 <p className="mt-2 text-sm leading-6 text-charcoal/65">
-                  Founder dentist focused on calm, cosmetic-minded care.
+                  A warm studio designed around comfort, clarity, and trust.
                 </p>
               </div>
             </div>
