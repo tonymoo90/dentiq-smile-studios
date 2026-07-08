@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 type Service = {
   title: string;
@@ -557,6 +557,33 @@ function ContactDetail({ label, value }: { label: string; value: string }) {
   );
 }
 
+function HoursCard() {
+  const hours = [
+    ["Monday-Thursday", "8 AM-5 PM"],
+    ["Friday", "8 AM-2 PM"],
+    ["Saturday", "8 AM-2 PM"],
+  ];
+
+  return (
+    <div className="rounded-3xl border border-charcoal/10 bg-white/70 p-5">
+      <p className="text-xs font-semibold uppercase tracking-[0.24em] text-clay">
+        Hours
+      </p>
+      <div className="mt-4 divide-y divide-charcoal/10">
+        {hours.map(([day, time]) => (
+          <div
+            key={day}
+            className="flex items-center justify-between gap-4 py-3 first:pt-0 last:pb-0"
+          >
+            <p className="text-sm font-medium text-charcoal/62">{day}</p>
+            <p className="text-base font-semibold text-charcoal">{time}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function ScheduleStep({
   number,
   title,
@@ -612,7 +639,7 @@ function SiteNav() {
         </div>
         <a
           href="/#schedule"
-          className="shrink-0 rounded-full bg-charcoal px-5 py-3 text-sm font-semibold text-porcelain transition hover:bg-charcoal/90"
+          className="hidden shrink-0 rounded-full bg-charcoal px-5 py-3 text-sm font-semibold text-porcelain transition hover:bg-charcoal/90 md:inline-flex"
         >
           Schedule
         </a>
@@ -634,8 +661,27 @@ function SiteFooter() {
 }
 
 function MobileActionBar() {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const updateVisibility = () => {
+      setIsVisible(window.scrollY > 520);
+    };
+
+    updateVisibility();
+    window.addEventListener("scroll", updateVisibility, { passive: true });
+
+    return () => window.removeEventListener("scroll", updateVisibility);
+  }, []);
+
   return (
-    <div className="fixed inset-x-0 bottom-0 z-50 border-t border-charcoal/10 bg-ivory/92 px-4 py-3 shadow-[0_-18px_50px_rgba(39,35,31,0.12)] backdrop-blur-xl md:hidden">
+    <div
+      className={`fixed inset-x-0 bottom-0 z-50 border-t border-charcoal/10 bg-ivory/92 px-4 py-3 shadow-[0_-18px_50px_rgba(39,35,31,0.12)] backdrop-blur-xl transition duration-300 md:hidden ${
+        isVisible
+          ? "translate-y-0 opacity-100"
+          : "pointer-events-none translate-y-full opacity-0"
+      }`}
+    >
       <div className="mx-auto grid max-w-md grid-cols-2 gap-3">
         <a
           href="tel:+12014319753"
@@ -970,7 +1016,7 @@ function HomePage() {
           />
           <div className="mt-14 grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
             <div className="grid gap-4">
-              <ContactDetail label="Hours" value="Mon-Thu 8-5, Fri 8-2" />
+              <HoursCard />
               <ContactDetail label="Phone" value="201-431-9753" />
               <ContactDetail
                 label="Location"
