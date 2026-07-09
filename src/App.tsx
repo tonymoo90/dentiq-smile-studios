@@ -529,14 +529,20 @@ function ServiceCard({ service }: { service: Service }) {
   return (
     <a
       href={`/${service.slug}`}
-      className="group block rounded-[1.75rem] border border-charcoal/10 bg-porcelain p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-soft"
+      className="group flex flex-col rounded-[1.5rem] border border-charcoal/10 bg-porcelain p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-soft"
     >
-      <div
-        className={`mb-8 h-12 w-12 rounded-2xl ${service.accent} opacity-90`}
-      />
-      <h3 className="text-xl font-semibold text-charcoal">{service.title}</h3>
+      <div className="flex items-center gap-4">
+        <div
+          className={`h-10 w-10 shrink-0 rounded-2xl ${service.accent} opacity-90`}
+        />
+        <h3 className="text-xl font-semibold text-charcoal">
+          {service.title}
+        </h3>
+      </div>
       <p className="mt-3 leading-7 text-charcoal/65">{service.description}</p>
-      <p className="mt-6 text-sm font-semibold text-clay">Learn more</p>
+      <p className="mt-5 text-sm font-semibold text-clay">
+        Learn more
+      </p>
     </a>
   );
 }
