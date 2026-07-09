@@ -41,6 +41,19 @@ type ServicePage = {
   }>;
 };
 
+type LegalPage = {
+  slug: string;
+  title: string;
+  eyebrow: string;
+  metaTitle: string;
+  metaDescription: string;
+  intro: string;
+  sections: Array<{
+    title: string;
+    copy: string;
+  }>;
+};
+
 const openDentalSchedulingUrl =
   import.meta.env.VITE_OPEN_DENTAL_SCHEDULING_URL?.trim();
 const schedulingHref = openDentalSchedulingUrl || "tel:+12014319753";
@@ -391,6 +404,68 @@ const servicePages: ServicePage[] = [
   },
 ];
 
+const legalPages: LegalPage[] = [
+  {
+    slug: "privacy-policy",
+    eyebrow: "Privacy",
+    title: "Privacy Policy",
+    metaTitle: "Privacy Policy | Dentiq Smile Studios",
+    metaDescription:
+      "Privacy Policy for Dentiq Smile Studios in Englewood Cliffs, NJ.",
+    intro:
+      "This page explains how Dentiq Smile Studios may collect, use, and protect information shared through this website. It is intended as general website privacy language and should be reviewed with the practice's legal and compliance advisors.",
+    sections: [
+      {
+        title: "Information you share",
+        copy:
+          "When you call, request an appointment, or contact the practice, you may choose to share your name, phone number, email address, appointment preferences, or other details needed to respond to your request.",
+      },
+      {
+        title: "How information is used",
+        copy:
+          "Information submitted through the website may be used to respond to inquiries, help schedule visits, provide requested information, and improve the website experience.",
+      },
+      {
+        title: "Third-party services",
+        copy:
+          "The website may link to or embed trusted third-party services, such as online scheduling or maps. Those services may have their own privacy practices and policies.",
+      },
+      {
+        title: "Questions",
+        copy:
+          "For privacy questions or requests, contact Dentiq Smile Studios at 201-431-9753 or visit the practice at 110 Charlotte Place, Englewood Cliffs, NJ 07632.",
+      },
+    ],
+  },
+  {
+    slug: "notice-of-privacy-practices",
+    eyebrow: "HIPAA notice",
+    title: "Notice of Privacy Practices",
+    metaTitle: "Notice of Privacy Practices | Dentiq Smile Studios",
+    metaDescription:
+      "Notice of Privacy Practices information for Dentiq Smile Studios in Englewood Cliffs, NJ.",
+    intro:
+      "This page is reserved for the practice's official HIPAA Notice of Privacy Practices. Until the final notice is posted here, patients can request the current notice directly from the office.",
+    sections: [
+      {
+        title: "Your health information",
+        copy:
+          "A Notice of Privacy Practices explains how a dental practice may use and disclose protected health information and how patients can access certain privacy rights.",
+      },
+      {
+        title: "Request the current notice",
+        copy:
+          "To request the current Notice of Privacy Practices, call Dentiq Smile Studios at 201-431-9753 or ask the team during your visit.",
+      },
+      {
+        title: "Office location",
+        copy:
+          "Dentiq Smile Studios is located at 110 Charlotte Place, Englewood Cliffs, NJ 07632.",
+      },
+    ],
+  },
+];
+
 function SectionHeader({
   eyebrow,
   title,
@@ -544,6 +619,74 @@ function TransformationCard({
   );
 }
 
+function ApproachIcon({ type }: { type: "leaf" | "star" | "sparkle" | "heart" }) {
+  const commonProps = {
+    className: "h-5 w-5 text-sage",
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: 1.8,
+    strokeLinecap: "round" as const,
+    strokeLinejoin: "round" as const,
+    "aria-hidden": true,
+  };
+
+  if (type === "leaf") {
+    return (
+      <svg {...commonProps}>
+        <path d="M5 19c8 0 14-6 14-14-8 0-14 6-14 14Z" />
+        <path d="M5 19 19 5" />
+      </svg>
+    );
+  }
+
+  if (type === "star") {
+    return (
+      <svg {...commonProps}>
+        <path d="m12 3 2.7 5.5 6.1.9-4.4 4.3 1 6.1L12 16.9 6.6 19.8l1-6.1-4.4-4.3 6.1-.9L12 3Z" />
+      </svg>
+    );
+  }
+
+  if (type === "sparkle") {
+    return (
+      <svg {...commonProps}>
+        <path d="M12 3v5" />
+        <path d="M12 16v5" />
+        <path d="M3 12h5" />
+        <path d="M16 12h5" />
+        <path d="m5.6 5.6 2.8 2.8" />
+        <path d="m15.6 15.6 2.8 2.8" />
+        <path d="m18.4 5.6-2.8 2.8" />
+        <path d="m8.4 15.6-2.8 2.8" />
+      </svg>
+    );
+  }
+
+  return (
+    <svg {...commonProps}>
+      <path d="M20.8 8.6c0 5.1-8.8 10-8.8 10s-8.8-4.9-8.8-10A4.8 4.8 0 0 1 12 5.9a4.8 4.8 0 0 1 8.8 2.7Z" />
+    </svg>
+  );
+}
+
+function ApproachBadge({
+  label,
+  icon,
+}: {
+  label: string;
+  icon: "leaf" | "star" | "sparkle" | "heart";
+}) {
+  return (
+    <div className="flex min-h-12 min-w-[13.5rem] items-center gap-3 rounded-full border border-charcoal/10 bg-white/30 px-5 py-3 backdrop-blur">
+      <ApproachIcon type={icon} />
+      <p className="break-words text-sm font-semibold text-charcoal sm:text-base">
+        {label}
+      </p>
+    </div>
+  );
+}
+
 function ContactDetail({ label, value }: { label: string; value: string }) {
   return (
     <div className="rounded-3xl border border-charcoal/10 bg-white/70 p-5">
@@ -652,8 +795,21 @@ function SiteFooter() {
   return (
     <footer className="border-t border-charcoal/10 px-5 pb-28 pt-10 sm:px-8 md:pb-10">
       <div className="mx-auto flex max-w-7xl flex-col gap-5 text-sm text-charcoal/60 md:flex-row md:items-center md:justify-between">
-        <p className="font-semibold text-charcoal">Dentiq Smile Studios</p>
-        <p>Modern cosmetic and family dentistry in Englewood Cliffs.</p>
+        <div>
+          <p className="font-semibold text-charcoal">Dentiq Smile Studios</p>
+          <p className="mt-1">Modern cosmetic and family dentistry in Englewood Cliffs.</p>
+        </div>
+        <div className="flex flex-wrap gap-x-5 gap-y-2">
+          <a href="/privacy-policy" className="transition hover:text-charcoal">
+            Privacy Policy
+          </a>
+          <a
+            href="/notice-of-privacy-practices"
+            className="transition hover:text-charcoal"
+          >
+            Notice of Privacy Practices
+          </a>
+        </div>
         <p>Copyright 2026 Dentiq Smile Studios</p>
       </div>
     </footer>
@@ -813,44 +969,33 @@ function HomePage() {
         </div>
       </section>
 
-      <section className="px-5 py-20 sm:px-8">
-        <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-          <div className="aspect-[4/5] rounded-[2.5rem] border border-charcoal/10 bg-gradient-to-br from-white via-linen to-sage/70 p-5 shadow-soft">
-            <div className="relative flex h-full flex-col justify-end overflow-hidden rounded-[2rem] bg-[radial-gradient(circle_at_58%_18%,rgba(255,248,238,0.9),transparent_24%),linear-gradient(160deg,rgba(255,255,255,0.32),rgba(155,172,147,0.34))] p-7">
-              <div className="absolute left-1/2 top-20 h-44 w-44 -translate-x-1/2 rounded-full bg-porcelain/75 shadow-[0_28px_80px_rgba(39,35,31,0.10)]" />
-              <div className="absolute inset-x-10 bottom-28 h-40 rounded-full bg-charcoal/10 blur-3xl" />
-              <div className="relative z-10 rounded-3xl border border-white/80 bg-porcelain/88 p-5 shadow-[0_18px_50px_rgba(39,35,31,0.08)] backdrop-blur">
-                <p className="text-base font-semibold text-charcoal">
-                  Founder-led care
-                </p>
-                <p className="mt-2 text-sm leading-6 text-charcoal/65">
-                  A warm studio designed around comfort, clarity, and trust.
-                </p>
-              </div>
-            </div>
+      <section className="overflow-hidden bg-[#fbf3eb] px-5 py-20 sm:px-8">
+        <div className="mx-auto grid w-full max-w-7xl min-w-0 gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+          <div className="relative mx-auto w-full max-w-2xl lg:-ml-10 lg:max-w-none">
+            <img
+              src="/assets/dental-chair-approach-reference.png"
+              alt="Warm modern dental chair and exam light"
+              className="relative w-full object-contain"
+            />
           </div>
-          <div>
+          <div className="min-w-0 max-w-full lg:pl-4">
             <p className="mb-3 text-xs font-semibold uppercase tracking-[0.28em] text-clay">
-              Meet the dentist
+              Our approach
             </p>
-            <h2 className="font-serif text-4xl leading-tight text-charcoal md:text-6xl">
+            <h2 className="max-w-full font-serif text-4xl leading-tight text-charcoal md:text-5xl xl:text-6xl">
               Calm care is better care.
             </h2>
-            <p className="mt-7 text-lg leading-9 text-charcoal/70">
+            <p className="mt-6 max-w-full text-base leading-8 text-charcoal/70 sm:mt-7 sm:text-lg sm:leading-9">
               Dentiq Smile Studios was created for people who want excellent
               dentistry without the cold clinical feeling. Our founder blends
               advanced cosmetic training with a gentle, unrushed approach so
               every patient understands their options and feels in control.
             </p>
-            <div className="mt-8 grid gap-4 sm:grid-cols-3">
-              {["5+ years", "AACD trained", "Invisalign", "Comfort led"].map((item) => (
-                <div
-                  key={item}
-                  className="rounded-3xl border border-charcoal/10 bg-white/70 p-5 text-center"
-                >
-                  <p className="font-semibold text-charcoal">{item}</p>
-                </div>
-              ))}
+            <div className="mt-8 flex min-w-0 flex-wrap gap-4">
+              <ApproachBadge label="Calm-first care" icon="leaf" />
+              <ApproachBadge label="AACD trained" icon="star" />
+              <ApproachBadge label="Invisalign certified" icon="sparkle" />
+              <ApproachBadge label="Comfort designed" icon="heart" />
             </div>
           </div>
         </div>
@@ -1214,6 +1359,50 @@ function ServicePageView({ page }: { page: ServicePage }) {
   );
 }
 
+function LegalPageView({ page }: { page: LegalPage }) {
+  return (
+    <main className="min-h-screen overflow-hidden bg-ivory text-charcoal">
+      <SiteNav />
+
+      <section className="relative px-5 py-16 sm:px-8 lg:py-24">
+        <div className="absolute right-0 top-10 h-80 w-80 rounded-full bg-linen/70 blur-3xl" />
+        <div className="relative mx-auto max-w-4xl">
+          <p className="mb-5 inline-flex rounded-full border border-charcoal/10 bg-white/70 px-4 py-2 text-sm font-semibold text-clay">
+            {page.eyebrow}
+          </p>
+          <h1 className="font-serif text-5xl leading-[1.02] text-charcoal md:text-7xl">
+            {page.title}
+          </h1>
+          <p className="mt-7 text-lg leading-9 text-charcoal/70">
+            {page.intro}
+          </p>
+        </div>
+      </section>
+
+      <section className="px-5 pb-20 sm:px-8">
+        <div className="mx-auto grid max-w-4xl gap-4">
+          {page.sections.map((section) => (
+            <article
+              key={section.title}
+              className="rounded-[2rem] border border-charcoal/10 bg-porcelain p-6 shadow-sm md:p-8"
+            >
+              <h2 className="text-2xl font-semibold text-charcoal">
+                {section.title}
+              </h2>
+              <p className="mt-4 leading-8 text-charcoal/68">
+                {section.copy}
+              </p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <SiteFooter />
+      <MobileActionBar />
+    </main>
+  );
+}
+
 function setMetaTag(name: string, content: string) {
   const selector = `meta[name="${name}"]`;
   let tag = document.head.querySelector<HTMLMetaElement>(selector);
@@ -1255,6 +1444,7 @@ function setCanonical(pathname: string) {
 export default function App() {
   const pathname = window.location.pathname.replace(/\/$/, "") || "/";
   const servicePage = servicePages.find((page) => `/${page.slug}` === pathname);
+  const legalPage = legalPages.find((page) => `/${page.slug}` === pathname);
 
   useEffect(() => {
     if (servicePage) {
@@ -1266,6 +1456,18 @@ export default function App() {
       setMetaTag("twitter:title", servicePage.metaTitle);
       setMetaTag("twitter:description", servicePage.metaDescription);
       setCanonical(`/${servicePage.slug}`);
+      return;
+    }
+
+    if (legalPage) {
+      document.title = legalPage.metaTitle;
+      setMetaTag("description", legalPage.metaDescription);
+      setPropertyMetaTag("og:title", legalPage.metaTitle);
+      setPropertyMetaTag("og:description", legalPage.metaDescription);
+      setPropertyMetaTag("og:url", `https://dentiqsmilestudios.com/${legalPage.slug}`);
+      setMetaTag("twitter:title", legalPage.metaTitle);
+      setMetaTag("twitter:description", legalPage.metaDescription);
+      setCanonical(`/${legalPage.slug}`);
       return;
     }
 
@@ -1292,10 +1494,14 @@ export default function App() {
       "Judgment-free family and cosmetic dentistry in Englewood Cliffs, NJ.",
     );
     setCanonical("/");
-  }, [servicePage]);
+  }, [legalPage, servicePage]);
 
   if (servicePage) {
     return <ServicePageView page={servicePage} />;
+  }
+
+  if (legalPage) {
+    return <LegalPageView page={legalPage} />;
   }
 
   return <HomePage />;
